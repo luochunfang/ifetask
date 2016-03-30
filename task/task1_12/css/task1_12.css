@@ -1,0 +1,131 @@
+.container {
+    width: 400px;
+    margin: 0 auto;
+}
+
+/*实现单双行列不同颜色，且前三行特殊表示的表格*/
+table tr th {
+    text-align: left;
+    background-color: black;
+    color: white;
+}
+
+table tr:nth-child(2), table tr:nth-child(3), table tr:nth-child(4) {
+    color: red;
+}
+
+table tr:nth-child(2n+1) {
+    background-color: #CCCCCC;
+}
+
+/*实现正常状态和focus状态宽度不一致的input文本输入框，
+且鼠标焦点进入输入框时，宽度的变化以动画呈现*/
+input[type="text"] {
+    width: 100px;
+    height: 30px;
+    margin-top: 30px;
+
+    transition: width 5s;
+}
+
+input[type="text"]:focus {
+    width: 200px;
+}
+
+/*不使用JavaScript，实现一个Banner图轮流播放的效果，
+且点击右下角的1，2，3可以切换到对应Banner图片*/
+.box {
+    margin-top: 30px;
+    width: 500px;
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.box ul{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.box ul li {
+    height: 100%;
+    width: 100%;
+    top:0 ;
+    list-style: none;
+    position: absolute;
+}
+
+.box ul li img {
+    width: 100%;
+    height: 100%;
+}
+.box ul li:nth-child(1){
+    left: 0px;
+
+}
+.box ul li:nth-child(2){
+    left: 500px;
+}
+.box ul li:nth-child(3){
+    left: 1000px;
+}
+.index a{
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    text-align: center;
+    position: absolute;
+    bottom: 5px;
+    background-color: #8AC889;
+    text-decoration: none;
+    color: white;
+}
+.index1{
+    right: 90px;
+}
+.index2{
+    right: 60px;
+}
+.index3{
+    right: 30px;
+}
+.list{
+    animation: slide 10s infinite;
+}
+#list1:target~.list{
+    animation: slide infinite 10s;
+}
+#list2:target~.list{
+    animation: slide3 infinite 10s;
+}
+#list3:target~.list{
+    animation: slide4 infinite 10s;
+}
+/*定义动画*/
+@keyframes slide {
+    0%,96%,100%{left: 0}
+    30%{left: 0}
+    35%{left: -500px}
+    65%{left: -500px}
+    70%{left: -1000px}
+    95%{left: -1000px}
+}
+@keyframes slide3 {
+    0%,61%,100%{left:0}
+    5%,30%{left: -500px}
+    35%,60%{left: -1000px}
+}
+@keyframes slide4 {
+    0%,65%,100%{left: -500px}
+    5%,30%{left:-1000px}
+    31%,60%{left: 0}
+}
+
+
+
