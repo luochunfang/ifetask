@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 07</title>
+    <style>
+        #input-show {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: flex-end;
+            margin-top: 15px;
+        }
+
+        #input-show div {
+            width: 6px;
+            border: 1px solid #3c3c3c;
+            margin-left: 1px;
+            background-color: #E5AD09;
+        }
+    </style>
+</head>
+<body>
+<label><input type="text" id="input"></label>
+<button id="left-in">左侧入</button>
+<button id="right-in">右侧入</button>
+<button id="left-out">左侧出</button>
+<button id="right-out">右侧出</button>
+<button id="sort">排序</button>
+<div id="input-show">
+</div>
+<script>
+    var arr = [];
+    function sortArr(arr) {
+        var count = arr.length - 1;
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < count; j++) {
+                var temp = arr[j];
+                if (arr[j] > arr[j + 1]) {
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+            count--;
+        }
+    }
+    function getInputValue() {
+        var inputValue = document.getElementById("input").value;
+        if (!(/^[1-9]\d{1,2}$/).test(inputValue)) {
+            alert("只能输入大于10小于100的数");
+            return;
+        }
+        if (arr.length > 60) {
+            alert("最多只能添加60个元素");
+            return;
+        }
+        return inputValue;
+    }
+    function renderData() {
+        var showNode = document.getElementById("input-show");
+        showNode.innerHTML = " ";
+        //将数组中的元素显示到input-show div中
+        for (var i = 0; i < arr.length; i++) {
+            var pNode = document.createElement("div");
+            pNode.onclick = function (i) {
+                return function () {
+                    arr.splice(i, 1);
+                    renderData();
+                }
+            }(i);
+            pNode.style.height = arr[i] * 5 + "px";
+            showNode.appendChild(pNode);
+        }
+    }
+    document.getElementById("left-in").onclick = function () {
+        if (getInputValue()) {
+            arr.unshift(getInputValue());
+            renderData();
+        }
+    };
+    document.getElementById("right-in").onclick = function () {
+        if (getInputValue()) {
+            arr.push(getInputValue());
+            renderData();
+        }
+    };
+    document.getElementById("left-out").onclick = function () {
+        arr.shift();
+        renderData();
+    };
+    document.getElementById("right-out").onclick = function () {
+        arr.pop();
+        renderData();
+    };
+    document.getElementById("sort").onclick = function () {
+        sortArr(arr);
+        renderData();
+    };
+</script>
+</body>
+</html>

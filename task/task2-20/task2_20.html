@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 08</title>
+    <style>
+        #input-show {
+            display: flex;
+            flex-flow: row wrap;
+            align-items: flex-end;
+            margin-top: 15px;
+        }
+
+        #input-show div {
+            width: 35px;
+            height: 35px;
+            border: 1px solid #3c3c3c;
+            margin-left: 1px;
+            background-color: #E5AD09;
+        }
+        .search{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<label><textarea id="input"></textarea></label>
+<button id="left-in">左侧入</button>
+<button id="right-in">右侧入</button>
+<button id="left-out">左侧出</button>
+<button id="right-out">右侧出</button>
+<label><input type="text" id="searchInput"></label>
+<button id="search">查询</button>
+<div id="input-show">
+</div>
+<script>
+    var arr = [];
+    //获取文本框输入的值，并对其进行分割
+    function getInputValue() {
+        var inputValue = document.getElementById("input").value;
+       return inputValue.split(/[^0-9a-zA-z\u4e00-\u9fa5]+/).filter(function(x){
+           return x!= "";
+       });
+    }
+    //将数组的元素显示到div中
+    function renderData() {
+        var searchValue = document.getElementById("searchInput").value;
+        var macth = "";
+        if (searchValue!==""){
+            macth = new RegExp(searchValue);
+        }
+        document.getElementById("input-show").innerHTML = arr.map(function (item) {
+            var r = item;
+            if (macth!=""){
+                 r = item.replace(macth,"<span class='search'>"+searchValue+"</span>");
+            }
+            return "<div>"+r+"</div>";
+        }).join("");
+    }
+    //左侧入
+    document.getElementById("left-in").onclick = function () {
+        arr = getInputValue().concat(arr);
+        renderData();
+    };
+    //右侧入
+    document.getElementById("right-in").onclick = function () {
+        arr = arr.concat(getInputValue());
+        renderData();
+    };
+    //左侧出
+    document.getElementById("left-out").onclick = function () {
+        arr.shift();
+        renderData();
+    };
+    //右侧出
+    document.getElementById("right-out").onclick = function () {
+        arr.pop();
+        renderData();
+    };
+    //点击元素其自身消失
+    document.getElementById("input-show").onclick = function(event){
+        var node = event.target;
+        var index = Array.prototype.indexOf.call(node.parentNode.childNodes,node);
+        arr.splice(index,1);
+        renderData();
+    };
+    //查询
+    document.getElementById("search").onclick = function(){
+        renderData();
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 05</title>
+    <style>
+        #aqi-chart-wrap {
+            margin-top: 10px;
+            width: 100%;
+            height: 580px;
+            border: 1px solid #9F9F9F;
+            text-align: center;
+            font-size: 0;
+            position: relative;
+        }
+
+        h1 {
+            height: 10px;
+            font-size: 18px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #aqi-chart-wrap p {
+            display: inline-block;
+            vertical-align: bottom;
+            margin-left: 5px;
+        }
+
+        #aqi-chart-wrap span {
+            display: inline-block;
+            height: 100%;
+            vertical-align: bottom;
+        }
+
+        .day p {
+            width: 10px;
+        }
+
+        .week p {
+            width: 60px;
+        }
+
+        .month p {
+            width: 90px;
+        }
+    </style>
+</head>
+<body>
+<fieldset id="form-gra-time">
+    <legend>请选择日期粒度：</legend>
+    <label>日<input name="gra-time" value="day" type="radio" checked="checked"></label>
+    <label>周<input name="gra-time" value="week" type="radio"></label>
+    <label>月<input name="gra-time" value="month" type="radio"></label>
+</fieldset>
+
+<fieldset>
+    <legend>请选择查看的城市：</legend>
+    <select id="city-select">
+        <option>北京</option>
+        <option>上海</option>
+        <option>广州</option>
+        <option>深圳</option>
+        <option>成都</option>
+        <option>西安</option>
+        <option>福州</option>
+        <option>厦门</option>
+        <option>沈阳</option>
+    </select>
+</fieldset>
+<div id="aqi-chart-wrap" class="day">
+    <!-- <h1 id="aqi-chart-title">1月份到3月份空气质量</h1>-->
+    <span></span>
+</div>
+<script src="js/task.js"></script>
+</body>
+</html>

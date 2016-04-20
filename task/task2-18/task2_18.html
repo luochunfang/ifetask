@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 06</title>
+    <style>
+        #input-show p {
+            color: #fff;
+            background-color: #f00;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            margin-left: 4px;
+        }
+    </style>
+</head>
+<body>
+<label><input type="text" id="input"></label>
+<button id="left-in">左侧入</button>
+<button id="right-in">右侧入</button>
+<button id="left-out">左侧出</button>
+<button id="right-out">右侧出</button>
+<div id="input-show">
+
+</div>
+<script>
+    var arr = [5,1,3,4]; //用数组存储数据
+    var showNode = document.getElementById("input-show"); //用来显示数据的区域
+    //渲染数据
+    function renderData() {
+        //每次先清空显示区域的数据，避免叠加
+        var pchilds = showNode.getElementsByTagName("p");
+        while(pchilds.length){
+            showNode.removeChild(pchilds[pchilds.length-1]);
+        }
+
+        //将数组中的元素显示到input-show div中
+        for (var i = 0; i < arr.length; i++){
+            var pNode = document.createElement("p");
+            var textNode = document.createTextNode(arr[i]);
+            pNode.appendChild(textNode);
+            pNode.onclick = function(i){
+                return function (){
+                    arr.splice(i,1);
+                    renderData();
+                }
+            }(i);
+            showNode.appendChild(pNode);
+        }
+    }
+
+    //初始化各个按钮的点击事件
+    function init() {
+        renderData();
+        var inputNode = document.getElementById("input");
+        var childs = showNode.getElementsByTagName("p");
+        document.getElementById("left-in").onclick = function () {
+            if (!(/^[1-9]\d*$/).test(inputNode.value)){
+                alert("只能输入数字！");
+                return;
+            }
+            arr.unshift(inputNode.value);
+            renderData();
+        };
+        document.getElementById("right-in").onclick = function () {
+            if (!(/^[1-9]\d*$/).test(inputNode.value)){
+                alert("只能输入数字！");
+                return;
+            }
+            arr.push(inputNode.value);
+            renderData();
+        };
+        document.getElementById("left-out").onclick = function () {
+            arr.shift();
+            renderData();
+        };
+        document.getElementById("right-out").onclick = function () {
+            arr.pop();
+            renderData();
+        };
+    }
+    init();
+</script>
+</body>
+</html>
