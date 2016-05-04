@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    position: relative;
+}
+
+.box > img {
+    position: absolute;
+    object-fit: cover;
+}
+
+/*一张相片布局*/
+.one_img_layout > img {
+    width: 100%;
+    height: 100%;
+}
+
+/*两张相片布局*/
+.two_img_layout > img {
+    width: 66.6667%;
+    height: 100%;
+}
+
+.two_img_layout > img:nth-of-type(1) {
+    clip-path: url('../imgwall.svg#two_img_clip1');
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0% 100%);
+}
+
+.two_img_layout > img:nth-of-type(2) {
+    clip-path: url('../imgwall.svg#two_img_clip2');
+    -webkit-clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 0% 100%);
+    right: 0;
+}
+
+/*三张相片布局*/
+.three_img_layout > img:nth-of-type(1) {
+    height: 100%;
+    width: 66.6667%;
+}
+
+.three_img_layout > img:nth-of-type(2), .three_img_layout > img:nth-of-type(3) {
+    height: 50%;
+    width: 33.3333%;
+    right: 0;
+}
+
+.three_img_layout > img:nth-of-type(3) {
+    bottom: 0;
+}
+
+/*四张相片布局*/
+.four_img_layout > img {
+    width: 50%;
+    height: 50%;
+}
+
+.four_img_layout > img:nth-of-type(2) {
+    right: 0;
+}
+
+.four_img_layout > img:nth-of-type(3) {
+    bottom: 0;
+}
+
+.four_img_layout > img:nth-of-type(4) {
+    bottom: 0;
+    right: 0;
+}
+
+/*五张相片布局以及六张相片部分布局*/
+.five_img_layout > img:nth-of-type(1),
+.six_img_layout > img:nth-of-type(1) {
+    height: 66.6667%;
+    width: 66.6667%;
+}
+
+.five_img_layout > img:nth-of-type(2),
+.five_img_layout > img:nth-of-type(3),
+.five_img_layout > img:nth-of-type(4),
+.six_img_layout > img:nth-of-type(2),
+.six_img_layout > img:nth-of-type(3),
+.six_img_layout > img:nth-of-type(4),
+.six_img_layout > img:nth-of-type(5),
+.six_img_layout > img:nth-of-type(6) {
+    height: 33.3333%;
+    width: 33.3333%;
+}
+
+.five_img_layout > img:nth-of-type(2),
+.six_img_layout > img:nth-of-type(2) {
+    bottom: 0;
+}
+
+.five_img_layout > img:nth-of-type(3),
+.six_img_layout > img:nth-of-type(3){
+    bottom: 0;
+    left: 33.3333%;
+}
+
+.five_img_layout > img:nth-of-type(4),
+.six_img_layout > img:nth-of-type(4){
+    right: 0;
+}
+
+.five_img_layout > img:nth-of-type(5) {
+    width: 33.3333%;
+    height: 66.6667%;
+    bottom: 0;
+    right: 0;
+}
+
+/*六张相片布局*/
+.six_img_layout > img:nth-of-type(5){
+    right: 0;
+    top: 33.3333%;
+}
+.six_img_layout > img:nth-of-type(6){
+    right: 0;
+    bottom: 0;
+}
