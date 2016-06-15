@@ -33,6 +33,15 @@
        vertical-align:middle;
         }
        参考页面:http://www.111cn.net/cssdiv/css/55476.htm
+
 5、关于margin-right:浏览器默认从左往右渲染元素，在没有超出父容器的宽度的前提下 ,如果子容器的宽度能够被容纳,
-    设置margin-right是没有用的。如果设置了float呢？
+    设置margin-right是没有用的。如果设置了float,margin-right就是离右边的距离。
+
+6、object-fit: cover;
+    将图片设置好宽和高，这种技术能够很好的将大小不合适的进行裁剪和居中，裁剪方式和background-size:cover 的完全相同,
+    不过它是用来给imgs、videos和其他媒体标签设置样式的，而不是给背景图片设置样式。
+    参考页面：http://www.jb51.net/css/434267.html
+
+7、 overflow-y: scroll;
+    当浮动元素超出了一点点，不希望它浮动到下一层，为父级元素添上这一行代码，可以实现这个功能。
 

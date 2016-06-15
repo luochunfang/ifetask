@@ -7,6 +7,8 @@
 #header {
     height: 55px;
     background-color: #2189BE;
+    width: 100%;
+    min-width: 1280px;
 }
 
 #sideBar {
@@ -20,6 +22,7 @@
 
 #wrap {
     width: calc(100% - 260px);
+    min-width: 1020px;
     height: 1250px;
     position: relative;
     left: 260px;
@@ -29,7 +32,6 @@
 .headerwrap {
     position: relative;
     height: 100%;
-    width: 1400px;
 }
 
 .headerwrap span {
@@ -55,7 +57,7 @@
     -moz-border-radius: 15px;
     border-radius: 15px;
     position: absolute;
-    right: 65px;
+    right: calc((100% - 1000px)/2);
     top: 14px;
 }
 
@@ -68,7 +70,7 @@
     background: url("../pt/people.png") left bottom no-repeat;
     padding-left: 20px;
     position: absolute;
-    right: 00px;
+    right: calc((100% - 1160px)/2);
     top: 19px;
 }
 

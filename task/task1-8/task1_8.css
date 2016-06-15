@@ -58,8 +58,8 @@
        width: calc(8.33333333% - 20px);
     }
     .col-md-2{
-        width:calc(16.6666667% - 20px);
-    }
+         width:calc(16.6666667% - 20px);
+     }
     .col-md-3{
         width:calc(25% - 20px);
     }
