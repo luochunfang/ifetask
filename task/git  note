@@ -1,0 +1,4 @@
+git branch 查看本地分支
+git branch -a  查看本地远程所有分支
+git checkout -b dev  新建并且创建名为dev的分支
+git checkout dev  切换到名为dev的分支
